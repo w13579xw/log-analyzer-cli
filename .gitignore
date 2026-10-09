@@ -5,7 +5,6 @@ build/
 dist/
 *.egg-info/
 
-# Local test input and generated exports
-test.log
+# Generated exports
 entries.csv
 errors.json

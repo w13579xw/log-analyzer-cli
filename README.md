@@ -67,6 +67,52 @@ python -m loganalyzer.cli /path/to/server.log --level ERROR
 
 ## 测试
 
+### 手动测试
+
+在项目根目录执行以下命令。仓库中的 `test.log` 是示例日志文件，包含 `INFO`、`WARN`、`ERROR` 记录及一条应被忽略的普通文本。
+
+1. 读取并显示全部支持的日志级别：
+
+   ```bash
+   python -m loganalyzer.cli test.log
+   ```
+
+   预期显示 5 条日志记录，摘要为 `INFO: 2, WARN: 1, ERROR: 2`。
+
+2. 只显示 `ERROR` 级别：
+
+   ```bash
+   python -m loganalyzer.cli test.log --level ERROR
+   ```
+
+   预期显示 2 条错误记录，摘要为 `INFO: 0, WARN: 0, ERROR: 2`。
+
+3. 验证输入文件不存在时的错误处理：
+
+   ```bash
+   python -m loganalyzer.cli non_existent_file.log
+   ```
+
+   预期提示输入文件不存在，并以非零状态退出。
+
+4. 将 `ERROR` 记录导出为 JSON：
+
+   ```bash
+   python -m loganalyzer.cli test.log --level ERROR --output-format json --output errors.json
+   ```
+
+   预期控制台显示 2 条错误记录，并在项目根目录生成 `errors.json`。
+
+5. 将全部支持的记录导出为 CSV：
+
+   ```bash
+   python -m loganalyzer.cli test.log --output-format csv --output entries.csv
+   ```
+
+   预期控制台显示 5 条记录，并在项目根目录生成 `entries.csv`。
+
+### 自动化测试
+
 ```bash
 python -m pytest
 ```

@@ -1,0 +1,6 @@
+2026-10-08 10:15:30 INFO Server started successfully
+2026-10-08 10:15:45 WARN Memory usage reached 85%
+2026-10-08 10:16:02 [ERROR] Database connection timeout
+2026-10-08 10:16:15 INFO Retrying database connection
+2026-10-08 10:16:30 [ERROR] Database unavailable after 3 retries
+This is an unformatted noisy line that should be ignored
